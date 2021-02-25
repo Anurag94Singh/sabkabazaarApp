@@ -1,0 +1,76 @@
+// ------------------------ IMP STYLES CAROUSEL---------------------//
+
+::ng-deep .carousel{
+    height: 100% !important;
+}
+
+::ng-deep .carousel-slide{
+    height: 230px !important;
+    background-size: 100% 230px !important;
+}
+
+// ------------------------ IMP STYLES CAROUSEL---------------------//
+
+
+section.carousal {
+    height: 250px;
+    // box-shadow: 0 9px 5px #ececec;
+    box-shadow: 0 10px 22px -20px #000000;
+    box-shadow: 0 10px 13px -17px #000000;
+    padding: 10px 10px;
+
+    .demo-carousel {
+        // height: 100% !important;
+    }
+}
+
+
+
+section.category-section {
+    height: 250px;
+    // box-shadow: 0 9px 5px #ececec;
+    box-shadow: 0 10px 22px -20px #000000;
+    box-shadow: 0 10px 13px -17px #000000;
+    padding: 20px 10px;
+
+    &:first-child{
+        margin-top: 10px;
+    }
+
+    .category{
+        height: inherit;
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 80%;
+            flex: 0 1 30%;
+        }
+
+        .category-content{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            div {
+                font-size: 80%;
+                font-weight: 600;
+            }
+
+            .category-navigate-btn {
+                background: #d81b60;
+                font-size: 80%;
+                color: #fff;
+                border: none;
+                height: 30px;
+                margin: 25px 0px;
+                min-width: 150px;
+                padding: 5px 10px;
+                outline: none !important;
+                cursor: pointer;
+            }
+        }
+    }
+}

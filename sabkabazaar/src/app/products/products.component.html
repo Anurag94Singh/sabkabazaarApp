@@ -1,0 +1,26 @@
+<section class="products-section">
+    <aside class="left-nav">
+        <article *ngFor="let category of categories">
+            {{category}}
+        </article>
+    </aside>
+
+    <section class="main-section">
+        <div class="parent-card" *ngFor="let product of products">
+            <div class="main-card">
+                <h3>{{product.name}}</h3>
+                <div class="image-desc">
+                    <img [src]="product.imageURL.replace('static','assets')" alt="">
+                    <div class="product-description">
+                        {{product.description}}
+                    </div>
+                </div>
+                <div class="button-price">
+                    <span class="mrp-span">{{'MRP ' + product.price}}</span>
+                    <button class="addToCart-btn"> Buy Now </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>

@@ -1,0 +1,54 @@
+<section class="carousal">
+    <div class="demo-carousel" [style.height]="parentHeight">
+        <mat-carousel
+          #matCarousel
+          [timings]="timings"
+          [autoplay]="autoplay"
+          [interval]="interval"
+          [loop]="loop"
+          [hideArrows]="hideArrows"
+          [hideIndicators]="hideIndicators"
+          [color]="color"
+          [lazyLoad]="true"
+          [maxWidth]="maxWidth"
+          [proportion]="proportion"
+          [useKeyboard]="useKeyboard"
+          [useMouseWheel]="useMouseWheel"
+          [orientation]="orientation"
+          [slides]="slides"
+          [maintainAspectRatio]="maintainAspectRatio"
+          [slideHeight]="slideHeight"
+          (change)="onChange($event)"
+        >
+          <mat-carousel-slide
+            #matCarouselSlide
+            *ngFor="let slide of slidesList; let i = index"
+            [image]="banners[i].bannerImageUrl.replace('static','assets')"
+            [overlayColor]="overlayColor"
+            [hideOverlay]="hideOverlay"
+          >
+          </mat-carousel-slide>
+        </mat-carousel>
+      </div>
+
+</section>
+<ng-container *ngFor="let category of categories;let even = even; let odd = odd">
+    <section class="category-section" *ngIf="category.hasOwnProperty('imageUrl')">
+        <div class="category" *ngIf="even">
+            <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
+            <div class="category-content">
+                <h1>{{category.name}}</h1>
+                <div>{{category.description}}</div>
+                <button class="category-navigate-btn"  [routerLink]="['products']">{{'Explore ' + category.key}}</button>
+            </div>
+        </div>
+        <div class="category" *ngIf="odd">
+            <div class="category-content">
+                <h1>{{category.name}}</h1>
+                <div>{{category.description}}</div>
+                <button class="category-navigate-btn"  [routerLink]="['products']">{{'Explore ' + category.key}}</button>
+            </div>
+            <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
+        </div>
+    </section>
+</ng-container>

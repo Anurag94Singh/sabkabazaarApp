@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variable';
+
+* {
+    font-size: $fontsize;
+    font-family: $fontfamily;
+    font-weight: $fontweight;
+    color: $textcolor;
+    background-color: $transparentbg;
+    box-sizing: border-box;
+}
+
+
+h1 {
+    font-size: 120%;
+    font-weight: 700;
+    margin: 25px 0px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 90%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+    max-width: 1140px;
+    margin: 2px auto;
+}
