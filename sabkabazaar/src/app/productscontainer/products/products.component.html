@@ -1,18 +1,14 @@
-<section class="products-section">
-    <aside class="left-nav">
-        <article *ngFor="let category of categories">
-            {{category}}
-        </article>
-    </aside>
 
-    <section class="main-section">
-        <div class="parent-card" *ngFor="let product of products">
+<section class="main-section">
+    <ng-container *ngFor="let product of products">
+        <div class="parent-card" tabindex="0" *ngIf="product.visible || product.visible==undefined">
             <div class="main-card">
                 <h3>{{product.name}}</h3>
                 <div class="image-desc">
                     <img [src]="product.imageURL.replace('static','assets')" alt="">
                     <div class="product-description">
-                        {{product.description}}
+                        <div class="description">{{product.description}}</div>
+                        <button class="addToCart-btn"> {{'Buy Now @' + product.price}} </button>
                     </div>
                 </div>
                 <div class="button-price">
@@ -21,6 +17,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
+    </ng-container>
+    
 </section>

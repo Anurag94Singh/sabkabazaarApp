@@ -32,23 +32,6 @@
       </div>
 
 </section>
-<ng-container *ngFor="let category of categories;let even = even; let odd = odd">
-    <section class="category-section" *ngIf="category.hasOwnProperty('imageUrl')">
-        <div class="category" *ngIf="even">
-            <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
-            <div class="category-content">
-                <h1>{{category.name}}</h1>
-                <div>{{category.description}}</div>
-                <button class="category-navigate-btn"  [routerLink]="['products']">{{'Explore ' + category.key}}</button>
-            </div>
-        </div>
-        <div class="category" *ngIf="odd">
-            <div class="category-content">
-                <h1>{{category.name}}</h1>
-                <div>{{category.description}}</div>
-                <button class="category-navigate-btn"  [routerLink]="['products']">{{'Explore ' + category.key}}</button>
-            </div>
-            <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
-        </div>
-    </section>
-</ng-container>
+<section *ngFor="let category of categories;let even = even; let odd = odd">
+    <app-category [categoryData]='category' [isEven]='even' [isOdd]='odd' ></app-category>
+</section>

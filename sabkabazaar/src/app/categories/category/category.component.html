@@ -1,0 +1,18 @@
+<article tabindex="0" class="category-section" *ngIf="category.hasOwnProperty('imageUrl')">
+    <div class="category" *ngIf="isEven">
+        <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
+        <div class="category-content">
+            <h1>{{category.name}}</h1>
+            <div>{{category.description}}</div>
+            <button class="category-navigate-btn" [routerLink]="['products']">{{'Explore ' + category.key}}</button>
+        </div>
+    </div>
+    <div class="category" *ngIf="isOdd">
+        <div class="category-content">
+            <h1>{{category.name}}</h1>
+            <div>{{category.description}}</div>
+            <button class="category-navigate-btn" [routerLink]="['products']">{{'Explore ' + category.key}}</button>
+        </div>
+        <img [src]="category.imageUrl.replace('static','assets')" [alt]="category.description">
+    </div>
+</article>

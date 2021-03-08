@@ -17,3 +17,16 @@ footer{
         align-items: center;
     }
 }
+
+
+@media only screen and (max-width:480px){
+
+    footer{
+        padding: 0px 5px;
+        
+        .footer-content{
+        }
+    }
+    
+
+}

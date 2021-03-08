@@ -74,3 +74,21 @@ section.category-section {
         }
     }
 }
+
+
+@media only screen and (max-width:480px){
+    
+    ::ng-deep .carousel-slide{
+        height: 150px !important;
+        background-size: 100% 150px !important;
+    }
+    
+    // ------------------------ IMP STYLES CAROUSEL---------------------//
+    
+    
+    section.carousal {
+        height: 170px;
+    }
+
+
+}

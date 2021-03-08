@@ -11,7 +11,18 @@ import { CategoriesComponent } from './categories/categories.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatCarouselModule } from 'ng-mat-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductsComponent } from './products/products.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+
+import { ProductsComponent } from './productscontainer/products/products.component';
+import { ProductcategoryComponent } from './productscontainer/productcategory/productcategory.component';
+import { ProductscontainerComponent } from './productscontainer/productscontainer.component';
+import { CategoryComponent } from './categories/category/category.component';
+
+import {MatSelectModule} from '@angular/material/select';
+import { MobileCategoryComponent } from './productscontainer/mobile-category/mobile-category.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
@@ -24,14 +35,24 @@ import { ProductsComponent } from './products/products.component';
     ContainerComponent,
     CategoriesComponent,
     FooterComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductcategoryComponent,
+    ProductscontainerComponent,
+    CategoryComponent,
+    MobileCategoryComponent,
+    SignUpComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatCarouselModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

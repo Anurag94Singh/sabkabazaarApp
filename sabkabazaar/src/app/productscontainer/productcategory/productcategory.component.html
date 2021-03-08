@@ -1,0 +1,4 @@
+<!-- (click)="ToggleCategory(category.id)" -->
+<article *ngFor="let category of categories">
+    <button tabindex="0" [routerLink]="['/products']"  routerLinkActive="active-category"  [queryParams]="{ category : category.id }">{{category.name}}</button>
+</article>

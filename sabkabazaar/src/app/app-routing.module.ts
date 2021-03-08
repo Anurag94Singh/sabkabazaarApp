@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
-import { ContainerComponent } from './container/container.component';
-import { HeaderComponent } from './header/header.component';
-import { ProductsComponent } from './products/products.component';
-import { TestComponent } from './test/test.component';
+import { ProductscontainerComponent } from './productscontainer/productscontainer.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path : '', component : CategoriesComponent},
-  { path : 'products', component : ProductsComponent}
+  { path : 'products', component : ProductscontainerComponent},
+  { path : 'products/:cID', component : ProductscontainerComponent},
+  { path : 'signUp', component : SignUpComponent},
+  { path : 'signIn', component : SignInComponent},
 ];
 
 @NgModule({

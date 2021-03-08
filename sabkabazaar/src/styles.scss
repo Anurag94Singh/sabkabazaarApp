@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variable';
 
+@import 'media-query';
+
 * {
     font-size: $fontsize;
     font-family: $fontfamily;
@@ -8,6 +10,7 @@
     color: $textcolor;
     background-color: $transparentbg;
     box-sizing: border-box;
+    // outline: none;
 }
 
 
@@ -22,10 +25,63 @@ h3 {
     font-size: 90%;
 }
 
-html, body { height: 100%; }
+html, body { height: 100%; width: 100%; overflow-x: hidden;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container {
     max-width: 1140px;
     margin: 2px auto;
 }
+
+button.primary {
+    background: #d81b60;
+    font-size: 80%;
+    color: #fff;
+    border: none;
+    height: 30px;
+    margin: 25px 0px;
+    min-width: 150px;
+    outline: none !important;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #d81b60 !important;
+}
+
+
+
+/*   -------------- mat form css ----------- */
+
+.mat-form-field .mat-form-field-ripple {
+    background-color: #50DAE2 !important;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label mat-label{
+    color: #50DAE2 !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #f44336 !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+    margin-top: 0.3em !important;
+}
+
+mat-error {
+    font-size: 12px !important;
+}
+
+.mat-form-field-label {
+    font-size: 12px !important;
+}
+
+mat-label {
+    font-size: 14px !important;
+    position: relative !important;
+    top: 2px !important;
+}
+
+
+/*   -------------- mat form css ----------- */

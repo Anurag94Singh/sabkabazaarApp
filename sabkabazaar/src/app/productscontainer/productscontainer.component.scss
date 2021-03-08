@@ -1,0 +1,124 @@
+section.products-section{
+    display: flex;
+    min-height: 100vh;
+
+    .main-section-container {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .mobile-category {
+        .category-select {
+            display: none;
+        }
+    }
+
+    aside {
+        flex: 0 1 20%;
+        background-color: #e2e2e2;
+    }
+}
+
+@media only screen and (max-width : 480px){
+    section.products-section{
+        display: flex;
+        flex-direction: column;
+        
+
+    
+        .main-section-container {
+            display: block;
+            width: 100%;
+        }
+    
+        aside {
+            display: none;
+        }
+    
+        .mobile-category {
+            height: 40px;
+            background-color: #d81b60;
+            padding: 5px;
+            margin: 20px 0px;
+            
+            .category-select {
+                display: block !important;
+                height: inherit;
+                background-color: transparent;
+                height: 100% !important;
+
+                ::ng-deep .mat-select-trigger {
+                    height: 100% !important;
+
+                    .mat-select-value{
+                        text-align: center !important;
+
+                        .mat-select-value-text{
+                            .mat-select-min-line{
+                                color: #fff !important;
+                                font-size: 90%;
+                            }
+                        }
+                    }
+
+                    .mat-select-arrow-wrapper {
+                        .mat-select-arrow {
+                            color: #fff !important;
+                        }
+                    }
+                }
+            }
+
+            .category-select span.mat-select-min-line {
+                color: #fff;
+            }
+        }
+    }
+
+    
+
+}
+
+
+@media only screen and (min-width : 480px){
+    section.products-section{
+        
+
+    
+        .main-section-container {
+        }
+    
+        aside {
+        }
+    
+        .mobile-category {
+            display: none;
+            
+            .category-select {
+
+                ::ng-deep .mat-select-trigger {
+
+                    .mat-select-value{
+
+                        .mat-select-value-text{
+                            .mat-select-min-line{
+                            }
+                        }
+                    }
+
+                    .mat-select-arrow-wrapper {
+                        .mat-select-arrow {
+                        }
+                    }
+                }
+            }
+
+            .category-select span.mat-select-min-line {
+            }
+        }
+    }
+
+    
+
+}

@@ -1,11 +1,13 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { banner, category, MasterService } from '../master.service';
+import { MasterService } from '../master.service';
 
 import {
   MatCarouselSlideComponent,
   Orientation
 } from 'ng-mat-carousel';
 import { ThemePalette } from '@angular/material/core';
+import { category } from '../models/category.model';
+import { banner } from '../models/banner.model'
 
 
 @Component({
@@ -15,9 +17,9 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories: any = [];
+  categories: category[] = [];
 
-  banners: any = [];
+  banners: banner[] = [];
 
 
 
@@ -60,14 +62,15 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
 
     this.msService.getCategories()
-      .subscribe((data: category) => {
+      .subscribe((data: category[]) => {
         this.categories = data;
         console.log(this.categories);
         this.msService.mainCategories = this.categories.map((x : category) => x.name)
       });
 
+
     this.msService.getBanners()
-      .subscribe((data: banner) => {
+      .subscribe((data: banner[]) => {
         this.banners = data;
         this.banners.forEach((b: banner) => {
           this.images.push(b.bannerImageUrl.replace('static', 'assets'));
