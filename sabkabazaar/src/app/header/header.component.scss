@@ -1,7 +1,7 @@
 @import './../../variable.scss';
 
 header {
-    height: 80px;
+    height: 70px;
     box-shadow: 0px 3px 2px #e2e2e2;
     .header-container {
         height: 100%;
@@ -13,28 +13,20 @@ header {
         background-color: $bgcolor;
     
         .header_logo_div {
-            // flex: 0 1 10%;
-            // flex: 1;
+            display: flex;
+            align-items: center;
             flex-grow: 1;
             height: 95%;
             img {
-                height: inherit;
+                height: 80%;
+                margin-left: 5px;
             }
         }
         .header_menu_div {
-            // flex: 1;
-            // flex: 10;
-            flex-grow: 10;
-            margin-top: 30px;
-    
-            .header_menu_div_nav a{
-                font-size: 90%;
-                font-weight: 600;
-            }
+            display: none;
         }
         .header_login_cart_div {
-            // flex: 0 1 100px;
-            // flex: 1;
+            width: 6%;
             flex-grow: 1;
             height: 100%;
     
@@ -85,34 +77,38 @@ header {
 
 
 
-@media only screen and (max-width:480px){
 
-    /* ----------- header css ----------- */
 
-    
+
+@media only screen and (min-width:480px){
 
     header {
-        height: 70px;
+        height: 80px;
         .header-container {
         
             .header_logo_div {
-                display: flex;
-                align-items: center;
+                flex-grow: 1;
+                height: 95%;
                 img {
-                    height: 80%;
+                    height: inherit;
                 }
             }
             .header_menu_div {
-                display: none;
+                flex-grow: 10;
+                margin-top: 30px;
+                display: block;
+        
+                .header_menu_div_nav a{
+                    font-size: 90%;
+                    font-weight: 600;
+                }
             }
             .header_login_cart_div {
-                width: 15%;
+                flex-grow: 1;
+                height: 100%;
+                width: 10%;
             }
         }
     }
-    
-
-    /* ----------- header css ----------- */
-    
 
 }

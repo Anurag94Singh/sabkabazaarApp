@@ -14,6 +14,20 @@
 }
 
 
+// ------------------------ IMP STYLES CAROUSEL---------------------//
+
+.carousel{
+    height: 100% !important;
+}
+
+.carousel-slide{
+    height: 150px !important;
+    background-size: 100% 150px !important;
+}
+
+// ------------------------ IMP STYLES CAROUSEL---------------------//
+
+
 h1 {
     font-size: 120%;
     font-weight: 700;
@@ -31,6 +45,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container {
     max-width: 1140px;
     margin: 2px auto;
+    position: relative;
 }
 
 button.primary {
@@ -49,6 +64,51 @@ a:hover {
     color: #d81b60 !important;
 }
 
+button:disabled {
+    opacity: 0.7;
+}
+
+.mat-drawer {
+    position: absolute !important;
+    height: calc(100vh - 110px) !important;
+    transition: 0.5s visiblity;
+    width: 100% !important;
+}
+
+.mat-drawer-side.mat-drawer-end{
+    border: none !important;
+}
+
+.mat-drawer-inner-container {
+    #cart-header{
+        display: flex !important;
+        align-items: center !important; 
+        background: #000;
+
+        .cartHeader{
+            flex-grow: 10 !important;
+            padding: 10px;
+           
+
+            h1 {
+                font-size: 90% !important;
+                margin: 0%;
+                color: #d4d4d4;
+            }
+        }
+
+        #closeCart{
+            flex-grow: 1 !important;
+
+            span {
+                font-size: 90% !important;
+                font-weight: 700 !important;
+                cursor: pointer !important;
+                color: #d4d4d4;
+            }
+        }
+    }
+}
 
 
 /*   -------------- mat form css ----------- */
@@ -71,6 +131,7 @@ a:hover {
 
 mat-error {
     font-size: 12px !important;
+    font-weight: 600;
 }
 
 .mat-form-field-label {
@@ -83,5 +144,19 @@ mat-label {
     top: 2px !important;
 }
 
+input.mat-input-element {
+    font-size: 1em !important;
+    margin: 0px !important;
+    line-height: 1em !important;
+}
+
 
 /*   -------------- mat form css ----------- */
+
+
+@media only screen and (min-width:480px){   
+    .carousel-slide{
+        height: 230px !important;
+        background-size: 100% 230px !important;
+    }
+}

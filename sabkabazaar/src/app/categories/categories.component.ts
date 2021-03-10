@@ -1,4 +1,9 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+
+import { Observable, from, pipe, fromEvent } from 'rxjs';
+import { map, filter, tap } from 'rxjs/operators'
+
+
 import { MasterService } from '../master.service';
 
 import {
@@ -8,6 +13,7 @@ import {
 import { ThemePalette } from '@angular/material/core';
 import { category } from '../models/category.model';
 import { banner } from '../models/banner.model'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -57,13 +63,21 @@ export class CategoriesComponent implements OnInit {
   public log: string[] = [];
   public darkMode = false;
 
-  constructor(private msService: MasterService) { }
+
+  constructor(private msService: MasterService, private router : Router) { 
+    console.log('form data--->', this.router.getCurrentNavigation()?.extras.state);
+  }
 
   ngOnInit(): void {
 
     this.msService.getCategories()
       .subscribe((data: category[]) => {
         this.categories = data;
+        const CATEGRORY_DATA : category[] = this.categories.map(cat => ({
+          ...cat,
+          key: `Explore  ${cat.key}`
+        }));
+        this.categories = CATEGRORY_DATA;
         console.log(this.categories);
         this.msService.mainCategories = this.categories.map((x : category) => x.name)
       });
@@ -75,8 +89,8 @@ export class CategoriesComponent implements OnInit {
         this.banners.forEach((b: banner) => {
           this.images.push(b.bannerImageUrl.replace('static', 'assets'));
         })
-        console.log(this.banners);
-        console.log(this.images);
+        // console.log(this.banners);
+        // console.log(this.images);
       });
   }
 
@@ -87,5 +101,4 @@ export class CategoriesComponent implements OnInit {
   public onChange(index: any) {
     this.log.push(`MatCarousel#change emitted with index ${index}`);
   }
-
 }

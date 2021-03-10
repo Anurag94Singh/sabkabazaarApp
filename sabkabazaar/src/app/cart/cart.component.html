@@ -1,0 +1,13 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+      <article id="cart-header">
+          <div class="cartHeader">
+              <h1>{{'My Cart'}}</h1>
+            </div>
+            <div tabindex="0" role="button" id="closeCart" (click)="ToggleDrawer()">
+                <span>X</span>
+            </div>
+      </article>
+    </mat-drawer>
+  
+  </mat-drawer-container>

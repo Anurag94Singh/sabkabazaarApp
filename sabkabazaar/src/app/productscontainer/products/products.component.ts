@@ -1,7 +1,7 @@
-import { Component, DoCheck, Input, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Cart } from 'src/app/models/cart.model';
 import { MasterService } from '../../master.service';
-import { category } from '../../models/category.model';
 import { product } from '../../models/product.model';
 
 @Component({
@@ -9,7 +9,7 @@ import { product } from '../../models/product.model';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, DoCheck {
+export class ProductsComponent implements OnInit {
 
   @Input() categoryId: string = '';
 
@@ -38,29 +38,6 @@ export class ProductsComponent implements OnInit, DoCheck {
           this.FilterProductsByCategory(categoryID);
         }
       )
-
-    // this.route.params
-    // .subscribe(
-    //   (params : Params) => {
-    //     let categoryID = params['cID']; 
-    //     console.log(this.products)
-    //     if(categoryID != undefined){
-    //       console.log(categoryID);
-    //       this.FilterProductsByCategory(categoryID);
-    //     }
-    //   }
-    // )
-  }
-
-  ngDoCheck() {
-    //debugger
-    // console.log(this.categoryId);
-    // const change = this.differ.diff(this);
-    // if (change) {
-    //   change.forEachChangedItem(item => {
-    //     console.log('item changed', item);
-    //   });
-    // }
   }
 
   FilterProductsByCategory(categoryID: string) {
@@ -68,6 +45,18 @@ export class ProductsComponent implements OnInit, DoCheck {
       pD['visible'] = ((categoryID == pD.category || categoryID == undefined) ? true : false);
     });
     console.log(this.products)
+  }
+
+  AddToCart(product : product){
+    this.msService.addToCart(product.id)
+      .subscribe(
+        res => {
+          console.log(res);
+          let cart : Cart = {...product};
+          this.msService.cartItems.push(cart)
+        },
+        err => console.log(err)
+      )
   }
 
   ngOnDestroy() {

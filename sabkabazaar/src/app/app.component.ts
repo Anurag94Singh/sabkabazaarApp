@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MasterService } from './master.service';
 
 
 declare var $:any
@@ -11,6 +12,8 @@ declare var $:any
 })
 export class AppComponent implements OnInit {
   title = 'Sabka Bazaar';
+
+  constructor(public master : MasterService){}
 
   ngOnInit() {
     this.IntervalObservable().subscribe

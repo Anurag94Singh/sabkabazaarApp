@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MasterService } from '../master.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public master : MasterService) { 
+  }
 
   ngOnInit(): void {
   }
+
+  openCart(){
+    this.master.openCartSub.next(true);
+  }
+
 
 }

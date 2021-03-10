@@ -1,3 +1,5 @@
+const config = require('./config');
+
 const express = require('express');
 
 const cors = require('cors');
@@ -6,7 +8,7 @@ const fs = require('fs');
 
 const app = express(),
       bodyParser = require("body-parser");
-      port = 3000;
+      port = config.PORT;
 
 app.use(cors())
 
@@ -32,20 +34,21 @@ app.get('/', (req,res) => {
     res.sendFile(process.cwd()+"/sabkabazaar/dist/sabkabazaar/index.html")
 });
 
-app.get('/api/banners', (req,res) => {
+app.get(config.APIURL + '/banners', (req,res) => {
     res.json(loadJSON('server/banners/index.get.json'))
 });
 
-app.get('/api/categories', (req,res) => {
+app.get(config.APIURL + '/categories', (req,res) => {
     res.json(loadJSON('server/categories/index.get.json'))
 });
 
-app.get('/api/products', (req,res) => {
+app.get(config.APIURL + '/products', (req,res) => {
     res.json(loadJSON('server/products/index.get.json'))
 });
 
-app.post('/api/addToCart', (req,res) => {
-    res.json(loadJSON('server/addToCart/index.get.json'))
+app.post(config.APIURL + '/addToCart', (req,res) => {
+    console.log(req.body)
+    res.json(loadJSON('server/addToCart/index.post.json'))
 });
 
 app.listen(port, () => {

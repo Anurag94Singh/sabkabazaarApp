@@ -1,19 +1,5 @@
-// ------------------------ IMP STYLES CAROUSEL---------------------//
-
-::ng-deep .carousel{
-    height: 100% !important;
-}
-
-::ng-deep .carousel-slide{
-    height: 230px !important;
-    background-size: 100% 230px !important;
-}
-
-// ------------------------ IMP STYLES CAROUSEL---------------------//
-
-
 section.carousal {
-    height: 250px;
+    height: 170px;
     // box-shadow: 0 9px 5px #ececec;
     box-shadow: 0 10px 22px -20px #000000;
     box-shadow: 0 10px 13px -17px #000000;
@@ -24,12 +10,8 @@ section.carousal {
     }
 }
 
-
-
 section.category-section {
     height: 250px;
-    // box-shadow: 0 9px 5px #ececec;
-    box-shadow: 0 10px 22px -20px #000000;
     box-shadow: 0 10px 13px -17px #000000;
     padding: 20px 10px;
 
@@ -76,18 +58,10 @@ section.category-section {
 }
 
 
-@media only screen and (max-width:480px){
-    
-    ::ng-deep .carousel-slide{
-        height: 150px !important;
-        background-size: 100% 150px !important;
-    }
-    
-    // ------------------------ IMP STYLES CAROUSEL---------------------//
-    
+@media only screen and (min-width:480px){
     
     section.carousal {
-        height: 170px;
+        height: 250px;
     }
 
 

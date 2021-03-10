@@ -13,17 +13,21 @@ article {
         color: #8e8a8a;
         text-align: left;
         padding: 10px 25px;
-        transition: 0.3s border, 0.3s padding;
+        transition: 0.5s background-color,0.5s color;
 
         &:hover{
-            border-left: 3px solid #d81b60;
-            padding-left: 22px;
+            // border-left: 3px solid #d81b60;
+            // padding-left: 22px;
+            background-color: #ececec;
+            color: #d81b60;
         }
     }
 
     .active-category {
-        border-left: 3px solid #d81b60;
-        padding-left: 22px;
+        // border-left: 3px solid #d81b60;
+        // padding-left: 22px;
+        background-color: #ececec;
+        color: #d81b60;
     }
 
 }

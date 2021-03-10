@@ -16,9 +16,9 @@
                     <a href="#" [routerLink]="'signUp'">Register</a>
                 </nav>
             </div>
-            <div tabindex="0" role="button" class="header_login_cart_div_cart">
+            <div tabindex="0" role="button" class="header_login_cart_div_cart" (click)="openCart()">
                 <img src="assets/images/cart.svg" alt="cart">
-                <span>{{ 0 + ' items'}}</span>
+                <span>{{ master.cartItems.length + ' items'}}</span>
             </div>
         </div>
     </section>

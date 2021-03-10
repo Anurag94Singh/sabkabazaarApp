@@ -20,9 +20,14 @@ import { ProductscontainerComponent } from './productscontainer/productscontaine
 import { CategoryComponent } from './categories/category/category.component';
 
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+
+
 import { MobileCategoryComponent } from './productscontainer/mobile-category/mobile-category.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -41,7 +46,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     CategoryComponent,
     MobileCategoryComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule 
+    MatInputModule,
+    MatListModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

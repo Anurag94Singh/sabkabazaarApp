@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,21 +13,23 @@ export class SignInComponent implements OnInit {
 
  
 
-  constructor() { }
+  constructor(private route : Router) { }
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      email: new FormControl(null,Validators.required),
-      password: new FormControl(null,[Validators.required,Validators.minLength(8)])
+      email: new FormControl(null,[Validators.required, Validators.email]),
+      password: new FormControl(null,[Validators.required,Validators.minLength(6)])
     });
   }
 
-  get email() {
-    return this.signInForm.get("email");
+  get signin() {
+    console.log(this.signInForm.controls)
+    return this.signInForm.controls;
   }
 
-  GetForm(){
-    console.log(this.signInForm)
+  onSubmit() {
+    console.log(this.signInForm);
+    this.route.navigate([''], { state: this.signInForm.value });
   }
 
 }
