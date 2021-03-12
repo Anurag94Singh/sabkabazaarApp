@@ -5,7 +5,7 @@
             <h1>{{category.name}}</h1>
             <div class="category-description">{{category.description}}</div>
             <button class="category-navigate-btn">
-                <a class="abc" [routerLink]="['products']">{{category.key}}</a>
+                <a class="abc" [routerLink]="['products']" [queryParams]="{category: category.id}">{{category.key}}</a>
             </button>
         </div>
     </div>

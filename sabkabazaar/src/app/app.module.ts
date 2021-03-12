@@ -28,6 +28,7 @@ import { MobileCategoryComponent } from './productscontainer/mobile-category/mob
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { CartComponent } from './cart/cart.component';
+import { CarousalComponent } from './categories/carousal/carousal.component';
 
 
 
@@ -47,7 +48,8 @@ import { CartComponent } from './cart/cart.component';
     MobileCategoryComponent,
     SignUpComponent,
     SignInComponent,
-    CartComponent
+    CartComponent,
+    CarousalComponent
   ],
   imports: [
     BrowserModule,

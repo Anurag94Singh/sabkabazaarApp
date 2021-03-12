@@ -34,6 +34,12 @@ app.get('/', (req,res) => {
     res.sendFile(process.cwd()+"/sabkabazaar/dist/sabkabazaar/index.html")
 });
 
+app.post('/', (req,res) => {
+    //res.send('App Works !!!!');
+    console.log( '-------------' +  process.cwd() +"/sabkabazaar/dist/sabkabazaar/index.html");
+    res.sendFile(process.cwd()+"/sabkabazaar/dist/sabkabazaar/index.html")
+});
+
 app.get(config.APIURL + '/banners', (req,res) => {
     res.json(loadJSON('server/banners/index.get.json'))
 });
@@ -50,6 +56,14 @@ app.post(config.APIURL + '/addToCart', (req,res) => {
     console.log(req.body)
     res.json(loadJSON('server/addToCart/index.post.json'))
 });
+
+
+app.get('*', (req,res) => {
+    //res.send('App Works !!!!');
+    console.log( '-------------' +  process.cwd() +"/sabkabazaar/dist/sabkabazaar/index.html");
+    res.sendFile(process.cwd()+"/sabkabazaar/dist/sabkabazaar/index.html")
+});
+
 
 app.listen(port, () => {
     console.log(`Server listening on the port::${port}`);

@@ -4,7 +4,7 @@
         <h3>Get access to your Orders, Wishlist and Recommendations.</h3>
     </article>
     <article class="signin-form">
-        <form [formGroup]="signInForm" class="signin-form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="signInForm" #signInform class="signin-form" action="/" method="POST">
             <div class="form-group">
                 <mat-form-field>
                     <mat-label>Email</mat-label>
@@ -29,7 +29,7 @@
                       </mat-error>
                   </mat-form-field>
             </div>
-            <button class="primary" type="submit" [disabled]='!signInForm.valid'>Login</button>
+            <button class="primary" type="submit" [disabled]='!signInForm.valid' (click)="signInform.submit()">Login</button>
         </form>
     </article>
     

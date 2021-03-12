@@ -1,13 +1,54 @@
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-      <article id="cart-header">
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end" autoFocus=true FocusOrigin=true aria-label="Products Cart" role="modal">
+      <article  id="cart-header" tabindex="0" role="heading">
           <div class="cartHeader">
               <h1>{{'My Cart'}}</h1>
             </div>
-            <div tabindex="0" role="button" id="closeCart" (click)="ToggleDrawer()">
+            <div id="closeCart" (click)="ToggleDrawer()">
                 <span>X</span>
             </div>
       </article>
+      <main class="cart-item-container">
+        <section class="empty-cart" *ngIf="this.master.cartTotal === 0" tabindex="0" role="text">
+            <h1>No items in your cart</h1>
+            <h2>Your favourite items just a click away</h2>
+        </section>
+        <section class="cart-items-list">
+            <article class="cart-item" *ngFor="let item of this.master.cartItems" tabindex="0" role="listitem">
+                <div class="cart-item-img">
+                    <img [src]="item.imageURL.replace('static','assets')" [alt]="item.description">
+                </div>
+                <div class="cart-item-middle-content">
+                    <h1 class="cart-item-name">
+                        {{item.name}}
+                    </h1>
+                    <div class="cart-item-action">
+                        <button class="cart-item-remove primary" (click)="removeItem(item)" aria-label="remove item" role="button">-</button>
+                        <span class="cart-item-count">{{ item.itemCount }}</span>
+                        <button class="cart-item-add primary" (click)="addItem(item)" aria-label="add item" role="button">+</button>
+                        <span class="cart-item-cross-sign">x</span>
+                        <span class="cart-item-price">{{'Rs ' + item.price}}</span>
+                    </div>
+                </div>
+                <div class="cart-item-total">
+                    {{'Rs ' + (item.price * item.itemCount)}}
+                </div>
+            </article>
+        </section>
+        <section class="cart-item-inner" *ngIf="this.master.cartTotal !== 0">
+            <article class="cart-item-placeholder">
+                <img src="assets/images/lowest-price.png" alt="Lowest price image">
+                <h2>You won't find it cheaper anywhere</h2>
+            </article>
+        </section>
+        <section class="cart-item-checkout" *ngIf="this.master.cartTotal !== 0" tabindex="0">
+            <h3>Promo code can be applied on payment page</h3>
+            <button class="cart-item-checkout-button primary" aria-label="Checkout items">
+                <span class="left-button-side">Proceed to Checkout</span>
+                <span class="right-button-side">{{'Rs.' + this.master.cartTotal}}</span>
+            </button>
+        </section>
+      </main>
     </mat-drawer>
   
   </mat-drawer-container>

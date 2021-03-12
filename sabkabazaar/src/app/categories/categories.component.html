@@ -1,19 +1,7 @@
-<section class="carousal">
-  <div class="demo-carousel" [style.height]="parentHeight">
-    <mat-carousel #matCarousel [timings]="timings" [autoplay]="autoplay" [interval]="interval" [loop]="loop"
-      [hideArrows]="hideArrows" [hideIndicators]="hideIndicators" [color]="color" [lazyLoad]="true"
-      [maxWidth]="maxWidth" [proportion]="proportion" [useKeyboard]="useKeyboard" [useMouseWheel]="useMouseWheel"
-      [orientation]="orientation" [slides]="slides" [maintainAspectRatio]="maintainAspectRatio"
-      [slideHeight]="slideHeight" (change)="onChange($event)">
-      <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slidesList; let i = index"
-        [image]="banners[i].bannerImageUrl.replace('static','assets')" [overlayColor]="overlayColor"
-        [hideOverlay]="hideOverlay">
-      </mat-carousel-slide>
-    </mat-carousel>
-  </div>
-
+<section class="carousal" aria-label="offers carousal">
+  <app-carousal [caraousalData]="banners"></app-carousal>
 </section>
-<section *ngFor="let category of categories;let even = even; let odd = odd">
+<section class="categorySection" *ngFor="let category of categories;let even = even; let odd = odd">
   <app-category [categoryData]='category' [isEven]='even'></app-category>
 </section>
 

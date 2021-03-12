@@ -18,6 +18,12 @@ export class MasterService {
 
   openCartSub = new Subject<boolean>();
 
+  updateCartItem = new Subject<number>();
+
+  cartItemCounts : number = 0;
+
+  cartTotal : number = 0;
+
   cartItems : Cart[] = [];
 
   constructor(private http: HttpClient) { }

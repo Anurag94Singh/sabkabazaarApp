@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Subscription } from 'rxjs';
 import { MasterService } from '../master.service';
+import { Cart } from '../models/cart.model';
 
 @Component({
   selector: 'app-cart',
@@ -13,11 +15,13 @@ export class CartComponent implements OnInit {
 
   @ViewChild('drawer') public drawer: MatDrawer;
 
-  constructor(private master : MasterService) { }
+  openCartSubscription : Subscription;
+
+  constructor(public master : MasterService) { }
 
   ngOnInit(): void {
     let current = this;
-    this.master.openCartSub
+    this.openCartSubscription = this.master.openCartSub
       .subscribe(
         res => {
           this.ToggleDrawer()
@@ -31,23 +35,50 @@ export class CartComponent implements OnInit {
   ToggleDrawer(){
     let backDROP = document.getElementById('backDrop');
     let cartSection = document.getElementById('cartSection');
-    if(backDROP && (backDROP.style.display.toLocaleLowerCase() == "none" || backDROP.style.display.toLocaleLowerCase() == "")){
+    if(backDROP && !backDROP.classList.contains('smallResBackDrop')){
       if(cartSection){
         cartSection.style.zIndex = "1";
+        
       }
-      backDROP.style.display = "block"
+      backDROP.classList.add('smallResBackDrop')
+      
     }
     else if(backDROP){
-      if(cartSection){
-        cartSection.style.zIndex = "-1";
-      }
-      backDROP.style.display = "none"
+      // if(cartSection){
+      //   cartSection.style.zIndex = "-1";
+      // }
+      setTimeout(
+        () => {
+          if (cartSection) {
+            cartSection.style.zIndex = "-1";
+          }
+        }, 1000)
+      backDROP.classList.remove('smallResBackDrop')
     }
     this.drawer.toggle()
   }
 
-  ngAfterViewInit(){
-    console.log(this.drawer);
+  removeItem(item : Cart){
+    if(item.itemCount == 1){
+      this.master.cartItems = this.master.cartItems.filter(itm => itm.id !== item.id)
+    }
+    else{
+      item.itemCount--;
+    }
+    this.master.cartItemCounts--;
+    this.master.cartTotal -= item.price;
   }
+
+  addItem(item : Cart){
+    item.itemCount++;
+    this.master.cartItemCounts++;
+    this.master.cartTotal += item.price;
+  }
+
+  ngOnDestroy(){
+    this.openCartSubscription.unsubscribe();
+  }
+
+
 
 }

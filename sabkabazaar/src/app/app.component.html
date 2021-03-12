@@ -1,9 +1,9 @@
 <app-header></app-header>
 <section class="container">
     <router-outlet></router-outlet>
-    <section id="cartSection" class="cart-section">
-        <app-cart></app-cart>
+    <section id="cartSection"  class="cart-section" aria-label="Products Cart" aria-live="assertive">
+        <app-cart tabindex="0"></app-cart>
     </section>
 </section>
 <app-footer></app-footer>
-<div id="backDrop" (click)="master.openCartSub.next(false)"></div>
+<div id="backDrop" aria-hidden="true" class="back-drop" (click)="master.openCartSub.next(false)"></div>

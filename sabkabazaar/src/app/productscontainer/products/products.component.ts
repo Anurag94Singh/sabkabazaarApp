@@ -48,12 +48,31 @@ export class ProductsComponent implements OnInit {
   }
 
   AddToCart(product : product){
+    debugger
     this.msService.addToCart(product.id)
       .subscribe(
         res => {
           console.log(res);
-          let cart : Cart = {...product};
-          this.msService.cartItems.push(cart)
+          let itemExist = false;
+          let itemCounts = 0;
+          this.msService.cartTotal = 0;
+          this.msService.cartItems
+            .forEach(item => {
+              if(item.id === product.id){
+                item.itemCount++;
+                itemExist = true;
+              }
+              itemCounts += item.itemCount;
+              this.msService.cartTotal += item.price * item.itemCount;
+            })
+          if(!itemExist){
+            let cart : Cart = {...product,itemCount:1};
+            this.msService.cartItems.push(cart);
+            itemCounts++;
+            this.msService.cartTotal += product.price * 1;
+          }
+          this.msService.cartItemCounts = itemCounts;
+          // this.msService.updateCartItem.next(itemCounts);
         },
         err => console.log(err)
       )
