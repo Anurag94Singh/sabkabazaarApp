@@ -135,15 +135,15 @@ export class ProductscontainerComponent implements OnInit {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  categorySelected : string = '';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  categories : category[] = [];</span>
+<span class="cstat-no" title="statement not covered" >  categories : Category[] = [];</span>
 &nbsp;
-  // products: product[] = [];
+  // products: Product[] = [];
 &nbsp;
 <span class="fstat-no" title="function not covered" >  constructor(public <span class="cstat-no" title="statement not covered" >m</span>sService: MasterService)</span> { }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ngOnInit(</span>): void {
 <span class="cstat-no" title="statement not covered" >    this.msService.getCategories()</span>
-      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: category[]) =&gt; {
+      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: Category[]) =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.categories = data;</span>
       });
   }

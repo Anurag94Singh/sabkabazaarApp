@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, QueryList, SimpleChange, SimpleChanges, ViewChildren } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatCarouselSlideComponent, Orientation } from 'ng-mat-carousel';
-import { banner } from 'src/app/models/banner.model';
+import { Banner } from 'src/app/models/banner.model';
 
 @Component({
   selector: 'app-carousal',
@@ -10,7 +10,7 @@ import { banner } from 'src/app/models/banner.model';
 })
 export class CarousalComponent {
 
-  @Input() caraousalData : banner[] = [];
+  @Input() caraousalData: Banner[] = [];
 
   images: any = [];
   myCarouselImages = [];
@@ -32,7 +32,7 @@ export class CarousalComponent {
   public loop = true;
   public hideArrows = false;
   public hideIndicators = false;
-  public color : ThemePalette = 'primary';
+  public color: ThemePalette = 'primary';
   public maxWidth = 'auto';
   public maintainAspectRatio = true;
   public proportion = 25;

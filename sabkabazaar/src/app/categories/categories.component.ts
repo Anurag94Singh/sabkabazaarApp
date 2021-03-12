@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { MasterService } from '../master.service';
 
-import { category } from '../models/category.model';
-import { banner } from '../models/banner.model'
+import { Category } from '../models/category.model';
+import { Banner } from '../models/banner.model';
 import { Subscription } from 'rxjs';
 
 
@@ -12,25 +12,25 @@ import { Subscription } from 'rxjs';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
 
-  categories: category[] = [];
+  categories: Category[] = [];
 
-  banners: banner[] = [];
+  banners: Banner[] = [];
 
-  categoriesSubscription : Subscription;
+  categoriesSubscription: Subscription;
 
-  bannersSubscription : Subscription;
+  bannersSubscription: Subscription;
 
-  constructor(private msService: MasterService) { 
+  constructor(private msService: MasterService) {
   }
 
   ngOnInit(): void {
 
     this.categoriesSubscription = this.msService.getCategories()
-      .subscribe((data: category[]) => {
+      .subscribe((data: Category[]) => {
         this.categories = data;
-        const CATEGRORY_DATA : category[] = this.categories.map(cat => ({
+        const CATEGRORY_DATA: Category[] = this.categories.map(cat => ({
           ...cat,
           key: `Explore  ${cat.key}`
         }));
@@ -40,13 +40,13 @@ export class CategoriesComponent implements OnInit {
 
 
     this.bannersSubscription = this.msService.getBanners()
-      .subscribe((data: banner[]) => {
+      .subscribe((data: Banner[]) => {
         this.banners = data;
       });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy(): void{
     this.categoriesSubscription.unsubscribe();
-    this.bannersSubscription.unsubscribe()
+    this.bannersSubscription.unsubscribe();
   }
 }

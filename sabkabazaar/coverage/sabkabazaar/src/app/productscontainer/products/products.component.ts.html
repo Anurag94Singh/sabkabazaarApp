@@ -226,7 +226,7 @@ export class ProductsComponent implements OnInit, DoCheck {
 &nbsp;
   @Input() <span class="cstat-no" title="statement not covered" >categoryId: string = '';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  products: product[] = [];</span>
+<span class="cstat-no" title="statement not covered" >  products: Product[] = [];</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  constructor(public <span class="cstat-no" title="statement not covered" >m</span>sService: MasterService,</span> private <span class="cstat-no" title="statement not covered" >route: ActivatedRoute)</span> { }
 &nbsp;
@@ -234,7 +234,7 @@ export class ProductsComponent implements OnInit, DoCheck {
 <span class="fstat-no" title="function not covered" >  ngOnInit(</span>): void {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.msService.getProducts()</span>
-      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: product[]) =&gt; {
+      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: Product[]) =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.products = data;</span>
         let categoryId = <span class="cstat-no" title="statement not covered" >this.route.snapshot.queryParams['category'];</span>
 <span class="cstat-no" title="statement not covered" >        if (categoryId != undefined) {</span>

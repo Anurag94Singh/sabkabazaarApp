@@ -4,8 +4,8 @@
           <div class="cartHeader">
               <h1>{{'My Cart'}}</h1>
             </div>
-            <div id="closeCart" (click)="ToggleDrawer()">
-                <span>X</span>
+            <div id="closeCart" (click)="ToggleDrawer()" role="button" aria-label="close cart">
+                <i class="fa fa-times" aria-hidden="true"></i>
             </div>
       </article>
       <main class="cart-item-container">
@@ -23,9 +23,9 @@
                         {{item.name}}
                     </h1>
                     <div class="cart-item-action">
-                        <button class="cart-item-remove primary" (click)="removeItem(item)" aria-label="remove item" role="button">-</button>
+                        <button class="cart-item-remove primary" (click)="removeItem(item)" aria-label="remove item" role="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
                         <span class="cart-item-count">{{ item.itemCount }}</span>
-                        <button class="cart-item-add primary" (click)="addItem(item)" aria-label="add item" role="button">+</button>
+                        <button class="cart-item-add primary" (click)="addItem(item)" aria-label="add item" role="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
                         <span class="cart-item-cross-sign">x</span>
                         <span class="cart-item-price">{{'Rs ' + item.price}}</span>
                     </div>
@@ -43,7 +43,7 @@
         </section>
         <section class="cart-item-checkout" *ngIf="this.master.cartTotal !== 0" tabindex="0">
             <h3>Promo code can be applied on payment page</h3>
-            <button class="cart-item-checkout-button primary" aria-label="Checkout items">
+            <button class="cart-item-checkout-button primary" aria-label="Checkout items" (click)="ToggleDrawer()">
                 <span class="left-button-side">Proceed to Checkout</span>
                 <span class="right-button-side">{{'Rs.' + this.master.cartTotal}}</span>
             </button>

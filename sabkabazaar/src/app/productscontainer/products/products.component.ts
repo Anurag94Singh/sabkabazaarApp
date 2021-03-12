@@ -1,55 +1,61 @@
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/models/cart.model';
 import { MasterService } from '../../master.service';
-import { product } from '../../models/product.model';
+import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
-  @Input() categoryId: string = '';
+  @Input() categoryId = '';
 
-  products: product[] = [];
+  products: Product[] = [];
+
+  getProductsSubscription : Subscription;
+
+  addToCartSubscription : Subscription;
+
+  getQueryParamsSubscription : Subscription;
 
   constructor(public msService: MasterService, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
 
-    this.msService.getProducts()
-      .subscribe((data: product[]) => {
+    this.getProductsSubscription = this.msService.getProducts()
+      .subscribe((data: Product[]) => {
         this.products = data;
-        let categoryId = this.route.snapshot.queryParams['category'];
-        if (categoryId != undefined) {
+        const categoryId = this.route.snapshot.queryParams.category;
+        if (categoryId !== undefined) {
           this.FilterProductsByCategory(categoryId);
         }
       });
 
-    this.route.queryParams
+    this.getQueryParamsSubscription = this.route.queryParams
       .subscribe(
         (params: Params) => {
-          let categoryID = params['category'];
-          console.log(this.products)
+          const categoryID = params.category;
+          console.log(this.products);
           console.log(categoryID);
           this.FilterProductsByCategory(categoryID);
         }
-      )
+      );
   }
 
-  FilterProductsByCategory(categoryID: string) {
+  FilterProductsByCategory(categoryID: string): void {
     this.products.map(pD => {
-      pD['visible'] = ((categoryID == pD.category || categoryID == undefined) ? true : false);
+      pD.visible = ((categoryID === pD.category || categoryID === undefined) ? true : false);
     });
-    console.log(this.products)
+    console.log(this.products);
   }
 
-  AddToCart(product : product){
-    debugger
-    this.msService.addToCart(product.id)
+  AddToCart(product: Product): void{
+    this.addToCartSubscription = this.msService.addToCart(product.id)
       .subscribe(
         res => {
           console.log(res);
@@ -58,28 +64,32 @@ export class ProductsComponent implements OnInit {
           this.msService.cartTotal = 0;
           this.msService.cartItems
             .forEach(item => {
-              if(item.id === product.id){
+              if (item.id === product.id){
                 item.itemCount++;
                 itemExist = true;
               }
               itemCounts += item.itemCount;
               this.msService.cartTotal += item.price * item.itemCount;
-            })
-          if(!itemExist){
-            let cart : Cart = {...product,itemCount:1};
+            });
+          if (!itemExist){
+            const cart: Cart = {...product, itemCount: 1};
             this.msService.cartItems.push(cart);
             itemCounts++;
             this.msService.cartTotal += product.price * 1;
           }
           this.msService.cartItemCounts = itemCounts;
-          // this.msService.updateCartItem.next(itemCounts);
+          this.addToCartSubscription.unsubscribe();
         },
-        err => console.log(err)
-      )
+        err => {
+          console.log(err);
+          this.addToCartSubscription.unsubscribe();
+        }
+      );
   }
 
-  ngOnDestroy() {
-    console.log("destroyed!!!")
+  ngOnDestroy(): void{
+    this.getProductsSubscription.unsubscribe();
+    this.getQueryParamsSubscription.unsubscribe();
   }
 
 }

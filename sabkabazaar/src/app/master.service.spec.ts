@@ -3,21 +3,24 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { MasterService } from './master.service';
-import { banner } from './models/banner.model';
-import { category } from './models/category.model';
-import { product } from './models/product.model';
+import { Banner } from './models/banner.model';
+import { Category } from './models/category.model';
+import { Product } from './models/product.model';
 
 describe('MasterService', () => {
+
   let service: MasterService;
   let httpClientSpy: { get: jasmine.Spy };
 
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+
     service = new MasterService(httpClientSpy as any);
   });
 
   it('should return expected banners (HttpClient called once)', () => {
-    const expectedBanners: banner[] =
+
+    const expectedBanners: Banner[] =
       [{
         id: '1',
         bannerImageUrl: 'image.jpg',
@@ -32,11 +35,12 @@ describe('MasterService', () => {
       banners => expect(banners).toEqual(expectedBanners, 'expected banners'),
       fail
     );
+
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 
   it('should return expected categories (HttpClient called once)', () => {
-    const expectedCategories: category[] =
+    const expectedCategories: Category[] =
       [{
         id: '1',
         imageUrl: 'image.jpg',
@@ -51,11 +55,12 @@ describe('MasterService', () => {
       categories => expect(categories).toEqual(expectedCategories, 'expected categories'),
       fail
     );
+
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 
   it('should return expected products (HttpClient called once)', () => {
-    const expectedProducts: product[] =
+    const expectedProducts: Product[] =
       [{
         id: '',
         imageURL: '',
@@ -74,6 +79,7 @@ describe('MasterService', () => {
       products => expect(products).toEqual(expectedProducts, 'expected products'),
       fail
     );
+    
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 

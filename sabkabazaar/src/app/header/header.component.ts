@@ -9,13 +9,13 @@ import { MasterService } from '../master.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public master : MasterService) { 
+  constructor(public master: MasterService) {
   }
 
   ngOnInit(): void {
   }
 
-  openCart(){
+  openCart(): void{
     this.master.openCartSub.next(true);
   }
 

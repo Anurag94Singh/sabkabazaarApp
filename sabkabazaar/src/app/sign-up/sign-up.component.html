@@ -4,7 +4,7 @@
         <h3>We do not share your personal details to anyone.</h3>
     </article>
     <article class="signup-form">
-        <form [formGroup]="signUpForm" class="signup-form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="signUpForm" class="signup-form" #signupform  action="/" method="POST">
             <div class="form-group">
                 <mat-form-field>
                     <mat-label>First Name</mat-label>
@@ -53,7 +53,7 @@
                       </mat-error>
                   </mat-form-field>
             </div>
-            <button class="primary" type="submit" [disabled]='!signUpForm.valid'>Signup</button>
+            <button class="primary" type="submit" [disabled]='!signUpForm.valid' (click)="signupform.submit()">Signup</button>
         </form>
     </article>
     

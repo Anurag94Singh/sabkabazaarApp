@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class TestComponent implements OnInit {
 
-  banners : any;
+  banners: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
 
   }
 

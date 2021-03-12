@@ -1,7 +1,7 @@
 <app-header></app-header>
 <section class="container">
     <router-outlet></router-outlet>
-    <section id="cartSection"  class="cart-section" aria-label="Products Cart" aria-live="assertive">
+    <section id="cartSection" [hidden]="!master.IsCartOpen" class="cart-section" aria-label="Products Cart" aria-live="assertive">
         <app-cart tabindex="0"></app-cart>
     </section>
 </section>

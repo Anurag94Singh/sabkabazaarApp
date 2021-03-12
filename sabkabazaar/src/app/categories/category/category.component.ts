@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { category } from 'src/app/models/category.model';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-category',
@@ -8,9 +8,9 @@ import { category } from 'src/app/models/category.model';
 })
 export class CategoryComponent implements OnInit {
 
-  @Input('categoryData') category : category;
+  @Input() category: Category;
 
-  @Input() isEven : boolean;
+  @Input() isEven: boolean;
 
   constructor() { }
 

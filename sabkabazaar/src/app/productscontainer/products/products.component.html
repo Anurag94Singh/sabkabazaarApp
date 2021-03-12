@@ -1,8 +1,8 @@
 
 <section class="main-section" aria-label="products section">
     <ng-container *ngFor="let product of products">
-        <div class="parent-card" tabindex="0" aria-label="product" *ngIf="product.visible || product.visible==undefined">
-            <div class="main-card">
+        <div class="parent-card" aria-label="product" *ngIf="product.visible || product.visible==undefined">
+            <div class="main-card" tabindex="0" role="main">
                 <h3 aria-label="product name">{{product.name}}</h3>
                 <div class="image-desc">
                     <img [src]="product.imageURL.replace('static','assets')" alt="">

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MasterService } from '../master.service';
-import { category } from '../models/category.model';
+import { Category } from '../models/category.model';
 
 
 @Component({
@@ -8,25 +9,29 @@ import { category } from '../models/category.model';
   templateUrl: './productscontainer.component.html',
   styleUrls: ['./productscontainer.component.scss']
 })
-export class ProductscontainerComponent implements OnInit {
+export class ProductscontainerComponent implements OnInit, OnDestroy {
 
-  categorySelected : string = '';
+  categorySelected = '';
 
-  categories : category[] = [];
+  categories: Category[] = [];
 
-  // products: product[] = [];
+  getCategoriesSubscription : Subscription;
 
   constructor(public msService: MasterService) { }
 
   ngOnInit(): void {
-    this.msService.getCategories()
-      .subscribe((data: category[]) => {
+    this.getCategoriesSubscription = this.msService.getCategories()
+      .subscribe((data: Category[]) => {
         this.categories = data;
       });
   }
 
-  getCategory(event : string){
-    console.log(event)
+  getCategory(event: string): void{
+    console.log(event);
     this.categorySelected = event;
+  }
+
+  ngOnDestroy(): void {
+    this.getCategoriesSubscription.unsubscribe();
   }
 }

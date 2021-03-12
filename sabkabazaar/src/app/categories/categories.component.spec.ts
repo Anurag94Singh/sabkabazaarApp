@@ -2,15 +2,16 @@ import { ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/cor
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCarouselModule } from 'ng-mat-carousel';
-import { async, of } from 'rxjs';
+import { of } from 'rxjs';
 
 import { MasterService } from '../master.service';
-import { category } from '../models/category.model';
+import { Category } from '../models/category.model';
 
 import { CategoriesComponent } from './categories.component';
 import { CategoryComponent } from './category/category.component';
 
 describe('CategoriesComponent', () => {
+
   let component: CategoriesComponent;
   let fixture: ComponentFixture<CategoriesComponent>;
 
@@ -32,24 +33,24 @@ describe('CategoriesComponent', () => {
           key: '',
           description: ''
         }
-      ])
+      ]);
     },
     getBanners: () => {
       return of([
         {
-          bannerImageAlt: "Independence Day Deal - 25% off on shampoo",
-          bannerImageUrl: "/static/images/offers/offer1.jpg",
-          id: "5b6c38156cb7d770b7010ccc",
+          bannerImageAlt: 'Independence Day Deal - 25% off on shampoo',
+          bannerImageUrl: '/static/images/offers/offer1.jpg',
+          id: '5b6c38156cb7d770b7010ccc',
           isActive: true,
           order: 1
         }
-      ])
+      ]);
     }
   };
 
 
   beforeEach(async () => {
- 
+
     await TestBed.configureTestingModule({
       imports: [MatCarouselModule, NoopAnimationsModule],
       declarations: [CategoriesComponent, CategoryComponent],
@@ -61,11 +62,12 @@ describe('CategoriesComponent', () => {
     component = fixture.componentInstance;
 
     masterService = TestBed.inject(MasterService);
+
     fixture.detectChanges();
   });
 
   it('Tests getCategories!!!', fakeAsync(() => {
-    let categorySpy = spyOn(masterService,'getCategories').and.returnValue(
+    const categorySpy = spyOn(masterService, 'getCategories').and.returnValue(
       of([
         {
           id: '',
@@ -77,24 +79,27 @@ describe('CategoriesComponent', () => {
       ])
     );
 
-    let subSpy = spyOn(masterService.getCategories(),'subscribe');
+    const subSpy = spyOn(masterService.getCategories(), 'subscribe');
+
     component.ngOnInit();
     tick();
+
     expect(categorySpy).toHaveBeenCalledBefore(subSpy);
     expect(subSpy).toHaveBeenCalled();
 
   }));
 
-  it('retrieves all the categories', inject([MasterService], (masterService: MasterService) => {
-    masterService.getCategories().subscribe(result => expect(result.length).toBeGreaterThan(0));
+  it('retrieves all the categories', inject([MasterService], (mService: MasterService) => {
+    mService.getCategories().subscribe(result => expect(result.length).toBeGreaterThan(0));
   }));
 
-  it('retrieves all the banners', inject([MasterService], (masterService: MasterService) => {
-    masterService.getBanners().subscribe(result => expect(result.length).toBeGreaterThan(0));
+  it('retrieves all the banners', inject([MasterService], (mService: MasterService) => {
+    mService.getBanners().subscribe(result => expect(result.length).toBeGreaterThan(0));
   }));
 
   it('should create one section based on category data(1)', () => {
     fixture.detectChanges();
+    
     expect(fixture.nativeElement.querySelectorAll('.categorySection').length).toEqual(1);
   });
 

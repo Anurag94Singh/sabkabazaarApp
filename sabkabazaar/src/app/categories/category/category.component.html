@@ -4,8 +4,8 @@
         <div class="category-content">
             <h1>{{category.name}}</h1>
             <div class="category-description">{{category.description}}</div>
-            <button class="category-navigate-btn">
-                <a class="abc" [routerLink]="['products']" [queryParams]="{category: category.id}">{{category.key}}</a>
+            <button class="category-navigate-btn" [routerLink]="['products']" [queryParams]="{category: category.id}" aria-label="click to explore">
+                <a class="abc" tabindex="-1">{{category.key}}</a>
             </button>
         </div>
     </div>

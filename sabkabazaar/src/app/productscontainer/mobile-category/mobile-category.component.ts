@@ -1,34 +1,30 @@
 import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MasterService } from 'src/app/master.service';
-import { category } from 'src/app/models/category.model';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-mobile-category',
   templateUrl: './mobile-category.component.html',
   styleUrls: ['./mobile-category.component.scss']
 })
-export class MobileCategoryComponent implements OnInit, AfterContentInit {
+export class MobileCategoryComponent implements OnInit {
 
-  @Input() categories : category[] = [];
+  @Input() categories: Category[] = [];
 
   @Output() categorySelected = new EventEmitter<string>();
 
-  // products: product[] = [];
+  // products: Product[] = [];
 
   constructor(public msService: MasterService) { }
 
-  ngAfterContentInit(): void {
-    // this.categorySelected.emit('');
-    // console.log(this.categorySelected)
-  }
 
   ngOnInit(): void {
-    
+
   }
 
-  ToggleCategory(id : any){
-    console.log('category Id : ' + id)
-    this.categorySelected.emit(id)
+  ToggleCategory(id: any): void{
+    console.log('category Id : ' + id);
+    this.categorySelected.emit(id);
   }
 
 

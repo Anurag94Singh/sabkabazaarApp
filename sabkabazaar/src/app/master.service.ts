@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { banner } from './models/banner.model';
-import { category } from './models/category.model';
-import { product } from './models/product.model';
-import { Subject } from 'rxjs';
+import { Banner } from './models/banner.model';
+import { Category } from './models/category.model';
+import { Product } from './models/product.model';
+import { Observable, Subject } from 'rxjs';
 import { Cart } from './models/cart.model';
 
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -20,38 +20,40 @@ export class MasterService {
 
   updateCartItem = new Subject<number>();
 
-  cartItemCounts : number = 0;
+  cartItemCounts = 0;
 
-  cartTotal : number = 0;
+  cartTotal = 0;
 
-  cartItems : Cart[] = [];
+  cartItems: Cart[] = [];
+
+  IsCartOpen : boolean = false; 
 
   constructor(private http: HttpClient) { }
 
-  mainCategories : any = []
+  mainCategories: any = [];
 
-  //rootURL = '/api';
+  // rootURL = '/api';
 
   /* private vars and dont keep any type data */
 
-  private rootURL= environment.apiURL;
+  private rootURL = environment.apiURL;
 
-  getBanners() {
-    return this.http.get<banner[]>(this.rootURL + '/banners');
+  getBanners(): Observable<Banner[]> {
+    return this.http.get<Banner[]>(this.rootURL + '/banners');
   }
 
 
-  getCategories() {
-    return this.http.get<category[]>(this.rootURL + '/categories');
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.rootURL + '/categories');
   }
 
 
-  getProducts() {
-    return this.http.get<product[]>(this.rootURL + '/products');
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.rootURL + '/products');
   }
 
-  addToCart(productId : string){
-    return this.http.post<string>(this.rootURL + '/addToCart',{productID: productId})
+  addToCart(productId: string): Observable<{}>{
+    return this.http.post<string>(this.rootURL + '/addToCart', {productID: productId});
   }
 
 }

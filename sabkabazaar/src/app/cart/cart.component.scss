@@ -86,12 +86,17 @@ h1.cart-item-name {
 
 .cart-item-action button{
     min-width: auto;
-    height: auto;
     border-radius: 0.2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 0rem 0.3rem;
+    margin: auto;
+    height: 3vh;
+    display: flex;
+    align-items: center;
     margin: 0px;
+}
+
+.cart-item-action button i {
+    color: #fff;
+    font-size: 0.6rem;
 }
 
 .cart-item-action span {
@@ -193,3 +198,5 @@ h1.cart-item-name {
         font-size: 90%;
     }
 }
+
+

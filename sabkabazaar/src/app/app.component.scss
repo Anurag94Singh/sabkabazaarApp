@@ -4,7 +4,7 @@
     right: 0px;
     height: inherit;
     width: 100%;
-    z-index: -1;
+    // z-index: -1;
 }
 
 .back-drop{
@@ -15,11 +15,10 @@
     top: 0px;
     left: 0px;
     display: none;
-    pointer-events: none;
 }
 
 .smallResBackDrop {
-    display: none;
+    // display: none;
 }
 
 @media only screen and (min-width:480px){
@@ -28,7 +27,7 @@
     }
 
     .smallResBackDrop {
-        display: block;
+        // display: block;
     }
 }
 
@@ -39,5 +38,16 @@
 
     .smallResBackDrop {
         display: block;
+    }
+}
+
+
+@media only screen and (min-width:1023px) and (max-width:1200px){
+    .cart-section{
+        width: 40vw;
+    }
+
+    .smallResBackDrop {
+        // display: block;
     }
 }

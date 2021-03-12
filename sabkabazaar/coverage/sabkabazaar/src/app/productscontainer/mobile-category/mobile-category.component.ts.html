@@ -138,11 +138,11 @@ import { category } from 'src/app/models/category.model';
 })
 export class MobileCategoryComponent implements OnInit, AfterContentInit {
 &nbsp;
-  @Input() <span class="cstat-no" title="statement not covered" >categories : category[] = [];</span>
+  @Input() <span class="cstat-no" title="statement not covered" >categories : Category[] = [];</span>
 &nbsp;
   @Output() <span class="cstat-no" title="statement not covered" >categorySelected = new EventEmitter&lt;string&gt;();</span>
 &nbsp;
-  // products: product[] = [];
+  // products: Product[] = [];
 &nbsp;
 <span class="fstat-no" title="function not covered" >  constructor(public <span class="cstat-no" title="statement not covered" >m</span>sService: MasterService)</span> { }
 &nbsp;

@@ -133,13 +133,13 @@ export class ProductcategoryComponent implements OnInit {
 &nbsp;
   @Output() <span class="cstat-no" title="statement not covered" >categorySelected = new EventEmitter&lt;string&gt;();</span>
 &nbsp;
-  @Input() <span class="cstat-no" title="statement not covered" >categories : category[] = [];</span>
+  @Input() <span class="cstat-no" title="statement not covered" >categories : Category[] = [];</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  constructor(public <span class="cstat-no" title="statement not covered" >m</span>sService : MasterService,</span> private <span class="cstat-no" title="statement not covered" >router : Router)</span> { }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ngOnInit(</span>): void {
 <span class="cstat-no" title="statement not covered" >    this.msService.getCategories()</span>
-      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: category[]) =&gt; {
+      .subscribe(<span class="fstat-no" title="function not covered" >(d</span>ata: Category[]) =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.categories = data;</span>
       });
   }
