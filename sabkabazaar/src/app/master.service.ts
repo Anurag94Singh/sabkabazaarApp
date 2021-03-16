@@ -20,13 +20,17 @@ export class MasterService {
 
   updateCartItem = new Subject<number>();
 
+  updateInCartProduct = new Subject<string>();
+
+  toggleBackDrop = new Subject<boolean>();
+
   cartItemCounts = 0;
 
   cartTotal = 0;
 
   cartItems: Cart[] = [];
 
-  IsCartOpen : boolean = false; 
+  IsCartOpen = false;
 
   constructor(private http: HttpClient) { }
 

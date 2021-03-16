@@ -79,7 +79,7 @@ describe('MasterService', () => {
       products => expect(products).toEqual(expectedProducts, 'expected products'),
       fail
     );
-    
+
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 

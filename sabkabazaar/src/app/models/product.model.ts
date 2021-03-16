@@ -8,4 +8,5 @@ export interface Product{
     stock: number;
     sku: string;
     visible?: boolean;
+    inCart?: boolean;
   }

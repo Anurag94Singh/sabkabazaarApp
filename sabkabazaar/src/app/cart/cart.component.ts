@@ -20,35 +20,27 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(public master: MasterService) { }
 
   ngOnInit(): void {
-    const current = this;
     this.openCartSubscription = this.master.openCartSub
       .subscribe(
         res => {
-          this.ToggleDrawer();
+          this.toggleDrawer();
         },
-        err => {
-
+        (err: Error) => {
+          throw new Error(err.message);
         }
       );
   }
 
-  ToggleDrawer(): void{
-    const backDROP = document.getElementById('backDrop');
-    const cartSection = document.getElementById('cartSection');
-    if (backDROP && !backDROP.classList.contains('smallResBackDrop')){
-      this.master.IsCartOpen = true;
-      backDROP.classList.add('smallResBackDrop');
-    }
-    else if (backDROP){
-      setTimeout(() => {this.master.IsCartOpen = false;},500)
-      backDROP.classList.remove('smallResBackDrop');
-    }
+  toggleDrawer(): void{
+    this.master.IsCartOpen = !this.master.IsCartOpen;
     this.drawer.toggle();
+    this.master.toggleBackDrop.next(this.master.IsCartOpen);
   }
 
   removeItem(item: Cart): void{
     if (item.itemCount === 1){
       this.master.cartItems = this.master.cartItems.filter(itm => itm.id !== item.id);
+      this.master.updateInCartProduct.next(item.id);
     }
     else{
       item.itemCount--;

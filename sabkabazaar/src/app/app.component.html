@@ -1,9 +1,9 @@
 <app-header></app-header>
 <section class="container">
     <router-outlet></router-outlet>
-    <section id="cartSection" [hidden]="!master.IsCartOpen" class="cart-section" aria-label="Products Cart" aria-live="assertive">
+    <section id="cartsection" [hidden]="!master.IsCartOpen" class="cart-section" aria-label="Products Cart" aria-live="assertive">
         <app-cart tabindex="0"></app-cart>
     </section>
 </section>
 <app-footer></app-footer>
-<div id="backDrop" aria-hidden="true" class="back-drop" (click)="master.openCartSub.next(false)"></div>
+<div id="backdrop" *ngIf="isBackDropOpen" aria-hidden="true" class="back-drop" (click)="master.openCartSub.next(false)"></div>

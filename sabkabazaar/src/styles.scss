@@ -13,6 +13,13 @@
     // outline: none;
 }
 
+a.active-link{
+    color: #d81b60 !important;
+}
+
+img:focus,a:focus,button:focus,article:focus {
+    outline: 2px solid rgb(201, 199, 199);
+}
 
 // ------------------------ IMP STYLES CAROUSEL---------------------//
 
@@ -23,6 +30,42 @@
 .carousel-slide{
     height: 150px !important;
     background-size: 100% 150px !important;
+}
+
+.mat-icon-button[aria-label="Next slide"] span mat-icon {
+    display: none !important;
+    background: #000 !important;
+    opacity: 0.4 !important;
+}
+
+.mat-icon-button[aria-label="Next slide"] span:after {
+    content: "NEXT";
+    color: rgb(26, 26, 26);
+    font-weight: 600;
+    cursor: pointer;
+    background: #939393;
+    opacity: 0.5;
+    font-size: 13px;
+    padding: 1px;
+}
+
+.mat-icon-button[aria-label="Previous slide"] span mat-icon {
+    display: none !important;
+}
+
+.mat-icon-button[aria-label="Previous slide"] span:after {
+    content: "PREV";
+    color: rgb(26, 26, 26);
+    font-weight: 600;
+    cursor: pointer;
+    background: #939393;
+    opacity: 0.5;
+    font-size: 13px;
+    padding: 1px;
+}
+
+.mat-mini-fab.mat-primary {
+    background-color: #7f7f7f !important;
 }
 
 // ------------------------ IMP STYLES CAROUSEL---------------------//
@@ -69,6 +112,8 @@ button:disabled {
     opacity: 0.7;
 }
 
+/* ------------- mat drawer css ------------------ */
+
 .mat-drawer {
     position: absolute !important;
     height: calc(100vh - 110px) !important;
@@ -87,7 +132,7 @@ button:disabled {
         background: #000;
         height: 6vh;
 
-        .cartHeader{
+        .cart-header{
             flex-grow: 10 !important;
             padding: 10px;
            
@@ -99,7 +144,7 @@ button:disabled {
             }
         }
 
-        #closeCart{
+        #close-cart{
             flex-grow: 1 !important;
 
             i {
@@ -155,7 +200,7 @@ button:disabled {
         }
     }
 }
-
+/* ------------- mat drawer css ------------------ */
 
 /*   -------------- mat form css ----------- */
 

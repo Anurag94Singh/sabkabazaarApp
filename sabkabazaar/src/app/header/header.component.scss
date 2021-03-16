@@ -12,7 +12,7 @@ header {
         align-items: center;
         background-color: $bgcolor;
     
-        .header_logo_div {
+        .header-logo-div {
             display: flex;
             align-items: center;
             flex-grow: 1;
@@ -22,22 +22,22 @@ header {
                 margin-left: 5px;
             }
         }
-        .header_menu_div {
+        .header-menu-div {
             display: none;
         }
-        .header_login_cart_div {
+        .header-login-cart-div {
             width: 6%;
             flex-grow: 1;
             height: 100%;
     
-            .header_login_cart_div_login{
+            .header-login-cart-div-login{
                 display: flex;
                 align-items: center;
                 height: 40%;
                 justify-content: center;
             }
     
-            .header_login_cart_div_cart{
+            .header-login-cart-div-cart{
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -91,24 +91,24 @@ header {
         height: 4.5rem;
         .header-container {
         
-            .header_logo_div {
+            .header-logo-div {
                 flex-grow: 1;
                 height: 95%;
                 img {
                     height: inherit;
                 }
             }
-            .header_menu_div {
+            .header-menu-div {
                 flex-grow: 10;
                 margin-top: 30px;
                 display: block;
         
-                .header_menu_div_nav a{
+                .header-menu-div-nav a{
                     font-size: 90%;
                     font-weight: 600;
                 }
             }
-            .header_login_cart_div {
+            .header-login-cart-div {
                 flex-grow: 1;
                 height: 100%;
                 width: 10%;

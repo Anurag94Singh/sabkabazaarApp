@@ -1,22 +1,22 @@
 <header class="header" tabindex="0">
     <section class="header-container">
-        <div class="header_logo_div">
+        <div class="header-logo-div">
             <img src="assets/images/logo.png" [routerLink]="''" alt="App Logo">
         </div>
-        <div class="header_menu_div">
-            <nav class="header_menu_div_nav" aria-label="Navigation">
-                <a [routerLink]="['/']" routerLinkActive="active-link">Home</a>
+        <div class="header-menu-div">
+            <nav class="header-menu-div-nav" aria-label="Navigation">
+                <a [routerLink]="['/home']" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
                 <a [routerLink]="['/products']" routerLinkActive="active-link">Products</a>
             </nav>
         </div>
-        <div class="header_login_cart_div">
-            <div class="header_login_cart_div_login">
+        <div class="header-login-cart-div">
+            <div class="header-login-cart-div-login">
                 <nav class="small-nav">
-                    <a href="#" [routerLink]="'signIn'" routerLinkActive="active-link">SignIn</a>
-                    <a href="#" [routerLink]="'signUp'" routerLinkActive="active-link">Register</a>
+                    <a href="#" [routerLink]="['/account/signIn']" routerLinkActive="active-link">SignIn</a>
+                    <a href="#" [routerLink]="['/account/signUp']" routerLinkActive="active-link">Register</a>
                 </nav>
             </div>
-            <button tabindex="0" role="button" class="header_login_cart_div_cart" (click)="openCart()">
+            <button tabindex="0" role="button" class="header-login-cart-div-cart" (click)="openCart()">
                 <img src="assets/images/cart.svg" alt="cart">
                 <span>{{ this.master.cartItemCounts + ' items'}}</span>
             </button>

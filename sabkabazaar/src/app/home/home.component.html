@@ -1,0 +1,7 @@
+<section class="carousal" role="main">
+  <app-carousal [caraousalData]="banners"></app-carousal>
+</section>
+<section class="category-section" *ngFor="let category of categories;let even = even; let odd = odd" [attr.aria-label]="category.description">
+  <app-category [category]='category' [isEven]='even'></app-category>
+</section>
+
